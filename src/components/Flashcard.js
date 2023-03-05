@@ -9,19 +9,19 @@ import icone_quase from "../assets/icone_quase.png"
 export default function Flashcard(props){
     const {question, answer, numero, setActiveCounter, activeCounter} = props;
     const icone = [icone_erro, icone_quase, icone_certo]
+
     const altIconDesc = ["Ícone de erro","Ícone de acerto parcial","Ícone de acerto"];
-    const cores = ["#FF3030","#FF922E","#2FBE34"]
+    const cores = ["#FF3030","#FF922E","#2FBE34"];
+    const corInicial = ["#333333"];
 
     const altPlayDescription = `Ativar pergunta número ${numero}`
     const altFlipDescription = `Virar pergunta número ${numero}`
-    const corInicial = ("#333333");
+    const pergunta = `Pergunta ${numero}`
 
     const [inativa, setInativa] = useState(true);
     const [virada, setVirada] = useState(false);
     const [check, setCheck] = useState(undefined);
     const [textColor, setTextColor] = useState(corInicial);
-
-    const pergunta = `Pergunta ${numero}`
 
     function ativar(){
         setInativa(false);
