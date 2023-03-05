@@ -39,7 +39,7 @@ function App() {
   const randomParam = 0.5;
   function shuffle(array){
     array.sort(() => Math.random() - randomParam);
-  };
+  }
   shuffle(cards);
   const counter = cards.length;
   const [activeCounter, setActiveCounter] = useState(0);
