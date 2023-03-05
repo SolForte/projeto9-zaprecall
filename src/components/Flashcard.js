@@ -14,6 +14,8 @@ export default function Flashcard(props){
     const cores = ["#FF3030","#FF922E","#2FBE34"];
     const corInicial = ["#333333"];
 
+    const iconDataTest = ["no-icon","partial-icon","zap-icon"];
+
     const altPlayDescription = `Ativar pergunta número ${numero}`
     const altFlipDescription = `Virar pergunta número ${numero}`
     const pergunta = `Pergunta ${numero}`
@@ -39,36 +41,42 @@ export default function Flashcard(props){
 
     if (inativa === true && virada === false){
         return(
-            <Inativa>
-                <Paragraph cor={textColor}>{pergunta}</Paragraph>
-                <img src={seta_play} alt={altPlayDescription} onClick={ativar}/>
+            <Inativa data-test="flashcard">
+                <Paragraph cor={textColor} data-test="flashcard-text">
+                    {pergunta}
+                </Paragraph>
+                <img src={seta_play} alt={altPlayDescription} onClick={ativar} data-test="play-btn"/>
             </Inativa>)
     } else if (inativa === false && virada === false){
         return(
-            <Ativa>
-                <p>{question}</p>
-                <img src={seta_virar} alt={altFlipDescription} onClick={virar}/>
+            <Ativa data-test="flashcard">
+                <p data-test="flashcard-text">
+                    {question}
+                </p>
+                <img src={seta_virar} alt={altFlipDescription} onClick={virar} data-test="turn-btn"/>
             </Ativa>
         )
     } else if (inativa === false && virada === true){
         return(
-            <Virada>
-                <p>{answer}</p>
+            <Virada data-test="flashcard">
+                <p data-test="flashcard-text">
+                    {answer}
+                </p>
                 <Botoes>
-                    <BotaoResposta cor="#FF3030" onClick={()=> {desativar(0)}}>Não lembrei</BotaoResposta>
-                    <BotaoResposta cor="#FF922E" onClick={()=> {desativar(1)}}>Quase não lembrei</BotaoResposta>
-                    <BotaoResposta cor="#2FBE34" onClick={()=> {desativar(2)}}>Zap!</BotaoResposta>
+                    <BotaoResposta cor="#FF3030" onClick={()=> {desativar(0)}} data-test="no-btn">Não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#FF922E" onClick={()=> {desativar(1)}} data-test="partial-btn">Quase não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#2FBE34" onClick={()=> {desativar(2)}} data-test="zap-btn">Zap!</BotaoResposta>
                 </Botoes>
             </Virada>
         )
     } else if (inativa === true && virada === true){
         return(
-            <>
-                <Inativa>
-                    <Paragraph cor={textColor}>{pergunta}</Paragraph>
-                    <img src={icone[check]} alt={altIconDesc[check]}/>
+                <Inativa data-test="flashcard">
+                    <Paragraph cor={textColor} data-test="flashcard-text">
+                        {pergunta}
+                    </Paragraph>
+                    <img src={icone[check]} alt={altIconDesc[check]} data-test={iconDataTest[check]}/>
                 </Inativa>
-            </>
         )
     }
     

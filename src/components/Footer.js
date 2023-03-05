@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Footer(props){
     const {counter, activeCounter} = props;
     return(
-        <Counter>
+        <Counter data-test="footer">
             {activeCounter}/{counter} CONCLUÍDOS
         </Counter>
     );
