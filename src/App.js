@@ -26,14 +26,17 @@ function App() {
       <Flashcard
         key={index}
         question={element.question}
-        answer={element.answer}/>
+        answer={element.answer}
+        numero={index+1}/>
     )
   )
 
   return (
     <Body>
       <Logo logo={logo}/>
+      <Perguntas>
       {flashcards}
+      </Perguntas>
       <Footer counter={counter} activeCounter={activeCounter}/>
     </Body>
   );
@@ -43,10 +46,13 @@ export default App;
 
 const Body = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: #FB6B6B;
   background: #FB6B6B;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 70px;
 `
+
+const Perguntas = styled.div``
