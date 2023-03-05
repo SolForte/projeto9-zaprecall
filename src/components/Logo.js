@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export default function Logo(props){
-    const {logo}=props;
-    return(
-        <LogoComponentizado>
-            <img src={logo} alt="logo"></img>
-            <p>ZapRecall</p>
-        </LogoComponentizado>
-    )
-};
+export default function Logo(props) {
+  const { logo } = props;
+  return (
+    <LogoComponentizado>
+      <img src={logo} alt="logo"></img>
+      <p>ZapRecall</p>
+    </LogoComponentizado>
+  );
+}
 
 const LogoComponentizado = styled.div`
     display: flex;
@@ -32,4 +32,4 @@ const LogoComponentizado = styled.div`
         color: #FFFFFF;
         transform: rotate(0.58deg);
     };
-`
+`;

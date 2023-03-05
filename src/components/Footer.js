@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export default function Footer(props){
-    const {counter, activeCounter} = props;
-    return(
-        <Counter data-test="footer">
-            {activeCounter}/{counter} CONCLUÍDOS
-        </Counter>
-    );
+export default function Footer(props) {
+  const { counter, activeCounter } = props;
+  return (
+    <Counter data-test="footer">
+      {activeCounter}/{counter} CONCLUÍDOS
+    </Counter>
+  );
 }
 
 const Counter = styled.div`
@@ -25,4 +25,4 @@ const Counter = styled.div`
   font-size: 18px;
   line-height: 22px;
   color: #333333;
-`
+`;
