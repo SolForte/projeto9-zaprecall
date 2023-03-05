@@ -9,13 +9,17 @@ import icone_quase from "../assets/icone_quase.png"
 export default function Flashcard(props){
     const {question, answer, numero, setActiveCounter, activeCounter} = props;
     const icone = [icone_erro, icone_quase, icone_certo]
+    const altIconDesc = ["Ícone de erro","Ícone de acerto parcial","Ícone de acerto"];
+    const cores = ["#FF3030","#FF922E","#2FBE34"]
 
     const altPlayDescription = `Ativar pergunta número ${numero}`
     const altFlipDescription = `Virar pergunta número ${numero}`
+    const corInicial = ("#333333");
 
     const [inativa, setInativa] = useState(true);
     const [virada, setVirada] = useState(false);
     const [check, setCheck] = useState(undefined);
+    const [textColor, setTextColor] = useState(corInicial);
 
     const pergunta = `Pergunta ${numero}`
 
@@ -30,12 +34,13 @@ export default function Flashcard(props){
         setInativa(true);
         setActiveCounter(activeCounter+1);
         setCheck(check)
+        setTextColor(cores[check])
     }
 
     if (inativa === true && virada === false){
         return(
             <Inativa>
-                <p>{pergunta}</p>
+                <Paragraph cor={textColor}>{pergunta}</Paragraph>
                 <img src={seta_play} alt={altPlayDescription} onClick={ativar}/>
             </Inativa>)
     } else if (inativa === false && virada === false){
@@ -59,17 +64,25 @@ export default function Flashcard(props){
     } else if (inativa === true && virada === true){
         return(
             <>
-                <Finalizada>
-                    <p>{pergunta}</p>
-                    <img src={icone[check]}/>
-                </Finalizada>
+                <Inativa>
+                    <Paragraph cor={textColor}>{pergunta}</Paragraph>
+                    <img src={icone[check]} alt={altIconDesc[check]}/>
+                </Inativa>
             </>
         )
     }
     
 }
 
-const Finalizada = styled.div``
+const Paragraph = styled.p`
+        font-family: 'Recursive', cursive;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: ${props => props.cor};
+        text-decoration-line: ${props => props.cor != "#333333" ? "line-through" : "none"}
+`
 
 const Botoes = styled.div`
     display: flex;
@@ -84,7 +97,7 @@ const BotaoResposta = styled.button`
     border-radius: 5px;
     text-decoration: none;
     border: none;
-    background-color: ${p => p.cor};
+    background-color: ${props => props.cor};
 
     font-family: 'Recursive', cursive;
     font-style: normal;
@@ -151,16 +164,7 @@ const Inativa = styled.div`
     border-radius: 5px;
     align-items: center;
     justify-content: space-around;
-    p{
-        font-family: 'Recursive', cursive;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 19px;
-        color: #333333;
-    }
     img{
-        width: 20px;
         height: 23px;
     }
 `
