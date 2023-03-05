@@ -42,10 +42,11 @@ function App() {
 export default App;
 
 const Body = styled.div`
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #FB6B6B;
   background: #FB6B6B;
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
 `
