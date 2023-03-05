@@ -4,6 +4,7 @@ import logo from "./assets/logo.png"
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Logo from "./components/Logo";
+import Flashcard from "./components/Flashcard";
 
 function App() {
 
@@ -20,12 +21,19 @@ function App() {
   const counter = cards.length;
   const [activeCounter, setActiveCounter] = useState(0);
 
-
-  //Dúvida: O logo é estático. É necessário componentizar mesmo assim?
+  const flashcards = cards.map(
+    (element, index) => (
+      <Flashcard
+        key={index}
+        question={element.question}
+        answer={element.answer}/>
+    )
+  )
 
   return (
     <Body>
       <Logo logo={logo}/>
+      {flashcards}
       <Footer counter={counter} activeCounter={activeCounter}/>
     </Body>
   );
@@ -35,8 +43,9 @@ export default App;
 
 const Body = styled.div`
   width: 100%;
-  height: 100%;
   background-color: #FB6B6B;
+  background: #FB6B6B;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 `
