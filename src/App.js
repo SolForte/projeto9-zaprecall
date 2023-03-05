@@ -36,11 +36,15 @@ function App() {
         "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
     },
   ];
-  const randomizedCards = cards.sort((a, b) => 0.5 - Math.random());
+  const randomParam = 0.5;
+  function shuffle(array){
+    array.sort(() => Math.random() - randomParam);
+  };
+  shuffle(cards);
   const counter = cards.length;
   const [activeCounter, setActiveCounter] = useState(0);
 
-  const flashcards = randomizedCards.map((element, index) => (
+  const flashcards = cards.map((element, index) => (
     <Flashcard
       key={index}
       question={element.question}
