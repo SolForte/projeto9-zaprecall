@@ -18,7 +18,7 @@ export default function Flashcard(props) {
   const cores = ["#FF3030", "#FF922E", "#2FBE34"];
   const corInicial = "#333333";
 
-  const numbers = [0, 1, 2];
+  const [a, b, c] = ["0", "1", "2"];
 
   const iconDataTest = ["no-icon", "partial-icon", "zap-icon"];
 
@@ -83,7 +83,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#FF3030"
             onClick={() => {
-              desativar(numbers[0]);
+              desativar(Number(a));
             }}
             data-test="no-btn"
           >
@@ -92,7 +92,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#FF922E"
             onClick={() => {
-              desativar(numbers[1]);
+              desativar(Number(b));
             }}
             data-test="partial-btn"
           >
@@ -101,7 +101,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#2FBE34"
             onClick={() => {
-              desativar(numbers[2]);
+              desativar(Number(c));
             }}
             data-test="zap-btn"
           >
