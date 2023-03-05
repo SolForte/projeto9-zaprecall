@@ -5,6 +5,7 @@ import { useState } from "react";
 import Footer from "./components/Footer";
 import Logo from "./components/Logo";
 import Flashcard from "./components/Flashcard";
+import { act } from "react-dom/test-utils";
 
 function App() {
 
@@ -27,7 +28,9 @@ function App() {
         key={index}
         question={element.question}
         answer={element.answer}
-        numero={index+1}/>
+        numero={index+1}
+        setActiveCounter={setActiveCounter}
+        activeCounter={activeCounter}/>
     )
   )
 

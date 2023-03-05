@@ -2,15 +2,22 @@ import styled from "styled-components";
 import seta_play from "../assets/seta_play.png"
 import seta_virar from "../assets/seta_virar.png"
 import { useState } from "react";
+import icone_certo from "../assets/icone_certo.png"
+import icone_erro from "../assets/icone_erro.png"
+import icone_quase from "../assets/icone_quase.png"
 
 export default function Flashcard(props){
-    const {question, answer, numero} = props;
+    const {question, answer, numero, setActiveCounter, activeCounter} = props;
+    const icone = [icone_erro, icone_quase, icone_certo]
 
     const altPlayDescription = `Ativar pergunta número ${numero}`
     const altFlipDescription = `Virar pergunta número ${numero}`
 
-    const [inativa, setInativa] = useState(true)
-    const [virada, setVirada] = useState(false)
+    const [inativa, setInativa] = useState(true);
+    const [virada, setVirada] = useState(false);
+    const [check, setCheck] = useState(undefined);
+
+    const pergunta = `Pergunta ${numero}`
 
     function ativar(){
         setInativa(false);
@@ -19,10 +26,16 @@ export default function Flashcard(props){
         setVirada(true);
     }
 
+    function desativar(check){
+        setInativa(true);
+        setActiveCounter(activeCounter+1);
+        setCheck(check)
+    }
+
     if (inativa === true && virada === false){
         return(
             <Inativa>
-                <p>Pergunta {numero}</p>
+                <p>{pergunta}</p>
                 <img src={seta_play} alt={altPlayDescription} onClick={ativar}/>
             </Inativa>)
     } else if (inativa === false && virada === false){
@@ -37,15 +50,26 @@ export default function Flashcard(props){
             <Virada>
                 <p>{answer}</p>
                 <Botoes>
-                    <BotaoResposta cor="#FF3030">Não lembrei</BotaoResposta>
-                    <BotaoResposta cor="#FF922E">Quase não lembrei</BotaoResposta>
-                    <BotaoResposta cor="#2FBE34">Zap!</BotaoResposta>
+                    <BotaoResposta cor="#FF3030" onClick={()=> {desativar(0)}}>Não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#FF922E" onClick={()=> {desativar(1)}}>Quase não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#2FBE34" onClick={()=> {desativar(2)}}>Zap!</BotaoResposta>
                 </Botoes>
             </Virada>
+        )
+    } else if (inativa === true && virada === true){
+        return(
+            <>
+                <Finalizada>
+                    <p>{pergunta}</p>
+                    <img src={icone[check]}/>
+                </Finalizada>
+            </>
         )
     }
     
 }
+
+const Finalizada = styled.div``
 
 const Botoes = styled.div`
     display: flex;
