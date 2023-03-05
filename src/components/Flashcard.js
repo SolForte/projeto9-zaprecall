@@ -37,9 +37,9 @@ export default function Flashcard(props){
             <Virada>
                 <p>{answer}</p>
                 <Botoes>
-                    <button>Não lembrei</button>
-                    <button>Quase não lembrei</button>
-                    <button>Zap!</button>
+                    <BotaoResposta cor="#FF3030">Não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#FF922E">Quase não lembrei</BotaoResposta>
+                    <BotaoResposta cor="#2FBE34">Zap!</BotaoResposta>
                 </Botoes>
             </Virada>
         )
@@ -52,13 +52,22 @@ const Botoes = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    button{
-        width: 85.17px;
-        height: 37.17px;
-        border-radius: 5px;
-        text-decoration: none;
-        border: none;
-    }
+`
+
+const BotaoResposta = styled.button`
+    width: 85.17px;
+    height: 37.17px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    background-color: ${p => p.cor};
+
+    font-family: 'Recursive', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
 `
 
 const Virada = styled.div`
