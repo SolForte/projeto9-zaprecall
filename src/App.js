@@ -32,27 +32,32 @@ function App() {
   )
 
   return (
+    <>
     <Body>
       <Logo logo={logo}/>
       <Perguntas>
-      {flashcards}
+        {flashcards}
       </Perguntas>
-      <Footer counter={counter} activeCounter={activeCounter}/>
     </Body>
+    <Footer counter={counter} activeCounter={activeCounter}/>
+    </>
   );
 }
 
 export default App;
 
 const Body = styled.div`
-  width: 100vw;
-  height: 100%;
   background-color: #FB6B6B;
   background: #FB6B6B;
   display: flex;
-  align-items: center;
   flex-direction: column;
   margin-bottom: 70px;
 `
 
-const Perguntas = styled.div``
+const Perguntas = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  margin-bottom: 46px;
+  `

@@ -19,7 +19,7 @@ const Counter = styled.div`
   align-items: center;
   position: fixed;
   bottom: 0;
-  font-family: 'Recursive';
+  font-family: 'Recursive', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
