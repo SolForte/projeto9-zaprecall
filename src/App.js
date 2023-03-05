@@ -34,12 +34,14 @@ function App() {
       question: "Usamos estado (state) para __",
       answer:
         "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente",
-    },
-  ];
+    }
+];
   const randomParam = 0.5;
+
   function shuffle(array){
     array.sort(() => Math.random() - randomParam);
   }
+
   shuffle(cards);
   const counter = cards.length;
   const [activeCounter, setActiveCounter] = useState(0);
