@@ -72,12 +72,14 @@ const BotaoResposta = styled.button`
 
 const Virada = styled.div`
     width: 300px;
-    height: 131px;
+    min-height: 131px;
     background: #FFFFD5;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
+    justify-content: space-between;
     p{
         font-family: 'Recursive', cursive;
         font-style: normal;
