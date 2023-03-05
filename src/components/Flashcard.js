@@ -18,7 +18,7 @@ export default function Flashcard(props) {
   const cores = ["#FF3030", "#FF922E", "#2FBE34"];
   const corInicial = "#333333";
 
-  const [a, b, c] = ["0", "1", "2"];
+  const [errado, parcial, correto] = ["0", "1", "2"];
 
   const iconDataTest = ["no-icon", "partial-icon", "zap-icon"];
 
@@ -55,7 +55,7 @@ export default function Flashcard(props) {
         >
           {pergunta}
         </Paragraph>
-        <img
+        <img className="inicial"
           src={seta_play}
           alt={altPlayDescription}
           onClick={ativar}
@@ -83,7 +83,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#FF3030"
             onClick={() => {
-              desativar(Number(a));
+              desativar(Number(errado));
             }}
             data-test="no-btn"
           >
@@ -92,7 +92,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#FF922E"
             onClick={() => {
-              desativar(Number(b));
+              desativar(Number(parcial));
             }}
             data-test="partial-btn"
           >
@@ -101,7 +101,7 @@ export default function Flashcard(props) {
           <BotaoResposta
             cor="#2FBE34"
             onClick={() => {
-              desativar(Number(c));
+              desativar(Number(correto));
             }}
             data-test="zap-btn"
           >
@@ -162,6 +162,9 @@ const BotaoResposta = styled.button`
     font-size: 12px;
     line-height: 14px;
     color: #FFFFFF;
+    :hover{
+        cursor:pointer;
+    }
 `;
 
 const Virada = styled.div`
@@ -207,7 +210,9 @@ const Ativa = styled.div`
         position: absolute;
         bottom: 6px;
         right: 15px;
-
+    }
+    img:hover{
+      cursor:pointer;
     }
 `;
 
@@ -223,5 +228,8 @@ const Inativa = styled.div`
     justify-content: space-around;
     img{
         height: 23px;
+    }
+    img.inicial:hover{
+      cursor:pointer;
     }
 `;
