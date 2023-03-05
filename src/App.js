@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from "./assets/logo.png"
 import { useState } from "react";
 import Footer from "./components/Footer";
+import Logo from "./components/Logo";
 
 function App() {
 
@@ -19,18 +20,14 @@ function App() {
   const counter = cards.length;
   const [activeCounter, setActiveCounter] = useState(0);
 
+
+  //Dúvida: O logo é estático. É necessário componentizar mesmo assim?
+
   return (
-    <>
     <Body>
-      <Logo>
-        <img src={logo} alt="logo"></img>
-        <p>ZapRecall</p>
-      </Logo>
-
+      <Logo logo={logo}/>
+      <Footer counter={counter} activeCounter={activeCounter}/>
     </Body>
-
-    <Footer counter={counter} activeCounter={activeCounter}/>
-    </>
   );
 }
 
@@ -42,28 +39,4 @@ const Body = styled.div`
   background-color: #FB6B6B;
   display: flex;
   justify-content: center;
-`
-
-const Logo = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    img{
-        width: 52px;
-        height: 60px;
-        margin: 44px 10px 46px 0;
-    };
-    p{
-        font-family: 'Righteous', cursive;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 36px;
-        line-height: 45px;
-        display: flex;
-        text-align: center;
-        letter-spacing: -0.012em;
-        color: #FFFFFF;
-        transform: rotate(0.58deg);
-    };
 `

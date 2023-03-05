@@ -7,7 +7,6 @@ export default function Footer(props){
             {activeCounter}/{counter} CONCLUÍDOS
         </Counter>
     );
-
 }
 
 const Counter = styled.div`
@@ -20,4 +19,10 @@ const Counter = styled.div`
   align-items: center;
   position: fixed;
   bottom: 0;
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
 `
